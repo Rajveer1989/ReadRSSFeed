@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Read RSS Feed";
+}
+
+<div class="container">
+    <div class="row" style="padding-top:20px">
+        
+
+
+        <div class="col-md-12">
+            @using (Html.BeginForm("Read", "RSS",FormMethod.Post))
+            {
+
+                    <label>Enter RSS FEED URL</label>
+
+<table>
+    <tbody>
+        <tr>
+            <td width="100%"><div class="form-group  class="col-md-12"">
+    <input type="text" class="form-control" name="RSSURL" required="required" />
+</div></td>
+            <td>
+                <div class="form-group" style="margin-left:10px">
+                    <button type="submit" class="btn btn-success">Fetch Data</button>
+                </div>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+            
+           
+            <div style="margin-top:20px">
+                <table class="table table-bordered">
+                    <thead class="bg-primary">
+                        <tr >
+                            <th class="text-center" style="color:white">RSS Feed Data</th>                            
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.alldata != null)
+                        {
+                            foreach (var item in ViewBag.alldata)
+                            {
+                        <tr>
+                            <td>
+                                <b> @item.title</b> 
+                                <br />
+                                <p style="color:darkgray">@item.description</p>  
+                                <br />
+                                <a style="color:Highlight" href="@item.link">@item.link</a>
+                            </td>
+                            
+                        </tr>                                    
+                                                           
+                                    
+                            }
+                        }
+                        </tbody>
+                    </table>
+
+            </div>                                 
+
+                
+
+            }
+
+        </div>
+       
+    </div>
+
+</div>
+
